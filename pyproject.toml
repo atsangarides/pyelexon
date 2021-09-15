@@ -10,7 +10,7 @@ repository = "https://github.com/atsangarides/pyelexon"
 keywords = ["api", "energy"]
 classifiers = [
     "Development Status :: 3 - Alpha",
-    "Intended Audience :: Data Scientists",
+    "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
