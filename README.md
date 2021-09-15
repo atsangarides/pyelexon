@@ -4,8 +4,7 @@ Simple python wrapper for the Elexon BMRS API.
 
 [![](https://img.shields.io/badge/python-3.8-blue.svg)](https://github.com/pyenv/pyenv)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-[comment]: <> ([![pre-commit]&#40;https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&#41;]&#40;https://github.com/pre-commit/pre-commit&#41;)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 ## Getting started
 
