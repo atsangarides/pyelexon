@@ -1,6 +1,5 @@
 import logging
 import xml.etree.ElementTree as ET
-from collections import namedtuple
 from datetime import date
 from typing import Optional
 
