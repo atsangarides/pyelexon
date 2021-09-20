@@ -7,7 +7,7 @@ import requests
 
 from .configure_logging import setup_logger
 from .errors import UnsuccessfulRequest
-from .reports import Reports
+from .reports import tested_reports
 
 logger = setup_logger(logging.getLogger("PyElexon"))
 
@@ -23,11 +23,13 @@ class Elexon:
 
     def fetch_settlement(
         self,
-        report: Reports,
+        report: str,
         settlement_date: date,
         settlement_period: int,
         params: Optional[dict] = None,
     ) -> bytes:
+        if report not in tested_reports:
+            logger.warning(f"Provided report ({report}) not guaranteed to work")
         r = self._fetch_from_elexon(report, settlement_date, settlement_period, params)
 
         query = f"report={report},date={settlement_date},period={settlement_period}"
@@ -38,12 +40,11 @@ class Elexon:
 
     def _fetch_from_elexon(
         self,
-        report: Reports,
+        report: str,
         settlement_date: date,
         settlement_period: int,
         params: Optional[dict] = None,
     ) -> requests.Response:
-
         if params is None:
             params = {}
         url = f"https://api.bmreports.com/BMRS/{report}/V1/"
