@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyelexon"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["atsangarides <andreas_tsangarides@hotmail.com>"]
 license = "MIT"
