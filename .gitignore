@@ -142,3 +142,9 @@ cython_debug/
 *.iml
 out/
 .idea_modules/
+
+# testing VCR cassettes
+tests/cassettes/*
+
+# macOS files
+*DS_Store

@@ -18,16 +18,34 @@ from pyelexon import Elexon
 
 api_key = "123456"
 report = "DETSYSPRICES"
-settlement_date = date(2021, 9, 15)
-settlement_period = 1
+params = {
+    "settlement_date": "2021-01-01",
+    "settlement_period": 1
+}
 
 elexon = Elexon(api_key)
 # returns content of response
-r: bytes = elexon.fetch_settlement(report, settlement_date, settlement_period)
+r: bytes = elexon.fetch_data(report, params)
+```
+Example with report specific method
+```python
+from datetime import date
+from pyelexon import Elexon
+
+api_key = "123456"
+report = "DETSYSPRICES"
+
+
+elexon = Elexon(api_key)
+# returns content of response
+r: bytes = elexon.get_detsysprices(
+    report,
+    settlement_date=date(2021, 1, 1),
+    settlement_period=1
+)
 ```
 
 ## Tested reports
 
 * `DETSYSPRICES`
-* `PHYBMDATA`
 * `DYNBMDATA`
