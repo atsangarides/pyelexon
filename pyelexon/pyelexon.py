@@ -93,6 +93,28 @@ class Elexon:
         r = self._fetch_from_elexon(report, params)
         return r.content
 
+    def get_phybmdata(
+        self,
+        settlement_date: date,
+        settlement_period: int,
+        bm_unit_id: Optional[str] = None,
+        bm_unit_type: Optional[str] = None,
+        lead_party_name: Optional[str] = None,
+        ngc_bm_unit_name: Optional[str] = None,
+    ) -> bytes:
+        """Method for fetching PHYBMDATA data for the specified settlement period"""
+        report = "PHYBMDATA"
+        params = {
+            "settlement_date": self._date_fmt(settlement_date),
+            "settlement_period": settlement_period,
+            "bm_unit_id": bm_unit_id,
+            "bm_unit_type": bm_unit_type,
+            "lead_party_name": lead_party_name,
+            "ngc_bm_unit_name": ngc_bm_unit_name,
+        }
+        r = self._fetch_from_elexon(report, params)
+        return r.content
+
     def _check_for_errors(self, r: requests.Response) -> None:
         """Inspect the request response and the metadata in xml"""
         # http response errors

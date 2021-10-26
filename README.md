@@ -49,3 +49,4 @@ r: bytes = elexon.get_detsysprices(
 
 * `DETSYSPRICES`
 * `DYNBMDATA`
+* `PHYBMDATA`
