@@ -56,6 +56,12 @@ def test_get_dersysdata(client):
 
 
 @pytest.mark.vcr
+def test_get_lolpdrm(client):
+    r = client.get_lolpdrm(settlement_date=date(2021, 1, 1))
+    assert isinstance(r, bytes)
+
+
+@pytest.mark.vcr
 def test_get_dynbmdata(client):
     r = client.get_dynbmdata(settlement_date=date(2021, 1, 1), settlement_period=1)
     assert isinstance(r, bytes)
