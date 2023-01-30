@@ -82,6 +82,18 @@ class Elexon:
         self._missing_data(r, xpath="./responseBody/responseList/item/[recordType]")
         return r.content
 
+    def get_lolpdrm(self, settlement_date: date) -> bytes:
+        """Method for fetching LOLPDRM data for the specified settlement period
+        LOLP = Loss of Load Probability, DRM = De-rated Margin"""
+        report = "LOLPDRM"
+        params = {
+            "from_settlement_date": self._date_fmt(settlement_date),
+            "to_settlement_date": self._date_fmt(settlement_date),
+        }
+        r = self._fetch_from_elexon(report, params)
+        self._missing_data(r, xpath="./responseBody/responseList/item/[recordType]")
+        return r.content
+
     def get_dynbmdata(
         self,
         settlement_date: date,
