@@ -71,13 +71,19 @@ class Elexon:
         self._missing_data(r, xpath="./responseBody/responseList/item/[id]")
         return r.content
 
-    def get_dersysdata(self, settlement_date: date) -> bytes:
+    def get_dersysdata(self, settlement_date: date,
+                       settlement_period: Optional[int] = None) -> bytes:
         """Method for fetching DERSYSDATA data for the specified settlement period"""
         report = "DERSYSDATA"
+        
         params = {
             "from_settlement_date": self._date_fmt(settlement_date),
             "to_settlement_date": self._date_fmt(settlement_date),
         }
+
+        if settlement_period is not None:
+            params["settlement_period"] = settlement_period
+
         r = self._fetch_from_elexon(report, params)
         self._missing_data(r, xpath="./responseBody/responseList/item/[recordType]")
         return r.content
